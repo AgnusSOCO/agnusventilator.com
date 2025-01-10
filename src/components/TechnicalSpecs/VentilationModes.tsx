@@ -114,7 +114,7 @@ const VentilationModes = () => {
           <h4 className="text-lg font-semibold text-white">Synchronized Operation</h4>
         </div>
         <p className="text-slate-300">
-          All ventilation modes feature synchronized start capability, ensuring optimal
+          All ventilation modes feature synchronized start, ensuring optimal
           timing and coordination with patient breathing efforts for enhanced comfort
           and effectiveness.
         </p>
