@@ -5,6 +5,20 @@ interface NavbarProps {
   onGetStarted: () => void;
 }
 
+interface NavLinkProps {
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ onClick, children }) => (
+  <button
+    onClick={onClick}
+    className="text-3xl font-light text-white hover:text-blue-400 transition-colors"
+  >
+    {children}
+  </button>
+);
+
 const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
               <img 
                 src="/logo.png" 
                 alt="Agnus Logo" 
-                className="w-10 h-10 group-hover:scale-110 transition-transform"
+                className="w-16 h-16 object-contain group-hover:scale-110 transition-transform"
               />
             </button>
 
@@ -73,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
               <img 
                 src="/logo.png" 
                 alt="Agnus Logo" 
-                className="w-10 h-10"
+                className="w-16 h-16 object-contain"
               />
               <button
                 onClick={() => setIsOpen(false)}
@@ -109,19 +123,5 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
     </>
   );
 };
-
-interface NavLinkProps {
-  onClick: () => void;
-  children: React.ReactNode;
-}
-
-const NavLink: React.FC<NavLinkProps> = ({ onClick, children }) => (
-  <button
-    onClick={onClick}
-    className="text-3xl font-light text-white hover:text-blue-400 transition-colors"
-  >
-    {children}
-  </button>
-);
 
 export default Navbar;
