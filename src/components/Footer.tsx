@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             <img 
               src="/logo.png" 
               alt="Agnus Logo" 
-              className="w-20 h-20 object-contain"
+              className="w-28 h-28 sm:w-32 sm:h-32 object-contain"
             />
             <p className="text-gray-400">
               Pioneering the future of respiratory care with innovative technology
