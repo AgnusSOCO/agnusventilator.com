@@ -49,14 +49,13 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
             {/* Logo - Centered */}
             <button
               onClick={() => scrollToSection('top')}
-              className="flex items-center space-x-2 group"
+              className="group"
             >
               <img 
                 src="/logo.png" 
                 alt="Agnus Logo" 
                 className="w-10 h-10 group-hover:scale-110 transition-transform"
               />
-              <span className="text-2xl font-bold text-white">Agnus</span>
             </button>
 
             {/* Placeholder for symmetry - Right */}
@@ -71,14 +70,11 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
           <div className="h-full flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between p-6">
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="/logo.png" 
-                  alt="Agnus Logo" 
-                  className="w-10 h-10"
-                />
-                <span className="text-2xl font-bold text-white">Agnus</span>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="Agnus Logo" 
+                className="w-10 h-10"
+              />
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:text-blue-400 transition-colors p-2"
