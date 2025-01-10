@@ -24,7 +24,7 @@ const Brochure = () => {
         <div className="relative group">
           <div className="aspect-[3/4] bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl overflow-hidden border border-slate-600">
             <iframe
-              src="/brochures/agnus-ventilator-2024.pdf"
+              src="/brochures/agnus-ventilator-2025.pdf"
               className="w-full h-full"
               title="Brochure Preview"
             />
@@ -34,8 +34,8 @@ const Brochure = () => {
           
           {/* Download button */}
           <a
-            href="/brochures/agnus-ventilator-2024.pdf"
-            download="Agnus-Ventilator-Brochure-2024.pdf"
+            href="/brochures/agnus-ventilator-2025.pdf"
+            download="Agnus-Ventilator-Brochure-2025.pdf"
             className="absolute bottom-6 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg transition-all duration-300 group-hover:transform group-hover:-translate-y-1"
           >
             <Download className="w-5 h-5" />
