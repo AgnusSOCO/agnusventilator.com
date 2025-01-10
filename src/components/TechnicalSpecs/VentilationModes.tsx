@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wind, Info, Clock, Timer } from 'lucide-react';
+import { Wind, Info, Clock, Timer, Activity, Heart, Shield } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const modes = [
@@ -7,37 +7,27 @@ const modes = [
     id: 'cmv-pc-ac',
     name: 'CMV-PC-A/C',
     fullName: 'Continuous Mandatory Ventilation with Pressure Control - Assist/Control',
-    description: 'Delivers preset pressure with each breath, ideal for patients with variable lung compliance.',
+    description: 'Delivers preset pressure with each breath, ideal for patients with variable lung compliance. Features pre-programmable Post Inspiratory Pause Maneuver (PIPM) for enhanced lung assessment.',
     features: [
       'Pressure-targeted breaths',
       'Constant inspiratory pressure',
       'Volume varies with compliance',
-      'Synchronized patient triggering'
+      'Synchronized patient triggering',
+      'Pre-programmable automatic PIPM',
+      'Customizable pause duration and frequency'
     ]
   },
   {
     id: 'cmv-vc-ac-apc',
     name: 'CMV-VC-A/C-APC',
-    fullName: 'Continuous Mandatory Ventilation with Volume Control - Assist/Control with Adaptive Pressure Control',
-    description: 'Ensures consistent tidal volume delivery with adaptive pressure control.',
+    fullName: 'Continuous Mandatory Ventilation with Volume Control - Assist/Control with Automatic Pressure Compensation',
+    description: 'Ensures consistent tidal volume delivery with automatic pressure compensation for varying lung mechanics.',
     features: [
       'Volume-targeted breaths',
-      'Adaptive pressure control',
       'Constant flow delivery',
-      'Synchronized patient triggering'
-    ]
-  },
-  {
-    id: 'csv',
-    name: 'CSV',
-    fullName: 'Continuous Spontaneous Ventilation',
-    description: 'Supports natural breathing patterns with automatic backup ventilation when needed.',
-    features: [
-      'Patient-initiated breaths',
-      'Automatic inspiration after TW expiration',
-      'Seamless mode transition',
-      'Automatic return to previous mode',
-      'Adjustable TW (Trigger Window) time'
+      'Automatic pressure compensation',
+      'Synchronized patient triggering',
+      'Pressure varies with resistance'
     ]
   },
   {
@@ -49,7 +39,7 @@ const modes = [
       'Patient-triggered breaths',
       'Backup mandatory rate',
       'Pressure support for spontaneous breaths',
-      'Synchronized patient triggering'
+      'Synchronized start capability'
     ]
   },
   {
@@ -58,10 +48,24 @@ const modes = [
     fullName: 'Recruitment Maneuver',
     description: 'Specialized mode for lung recruitment with pre-configurable settings.',
     features: [
-      'Pre-configurable pressure and time settings',
-      'Automated recruitment sequence',
-      'Safety pressure limits',
-      'Real-time response monitoring'
+      'Pre-configurable pressure levels',
+      'Adjustable maneuver duration',
+      'Automatic safety monitoring',
+      'Seamless mode transition',
+      'Real-time compliance monitoring'
+    ]
+  },
+  {
+    id: 'csv',
+    name: 'CSV',
+    fullName: 'Continuous Spontaneous Ventilation',
+    description: 'Supports natural breathing with automatic backup ventilation when TW time expires.',
+    features: [
+      'Automatic inspiration on TW expiry',
+      'Automatic return to previous mode',
+      'Patient-initiated breathing support',
+      'Adjustable trigger window (TW)',
+      'Continuous monitoring'
     ]
   }
 ];
@@ -72,34 +76,14 @@ const VentilationModes = () => {
       <SectionHeader
         icon={<Wind className="w-8 h-8 text-blue-400" />}
         title="Ventilation Modes"
-        subtitle="Comprehensive range of ventilation strategies for optimal patient care"
+        subtitle="Comprehensive range of ventilation strategies with synchronized start capability for optimal patient care"
       />
 
-      {/* Synchronized Start Notice */}
-      <div className="mb-8 bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex items-center gap-3">
-        <Clock className="w-6 h-6 text-blue-400 flex-shrink-0" />
-        <p className="text-slate-300">
-          <span className="font-semibold text-white">All Modes Feature Synchronized Start:</span>
-          {' '}Enhanced patient-ventilator synchronization across all ventilation modes for optimal breathing support.
-        </p>
-      </div>
-
-      {/* TW Time Notice */}
-      <div className="mb-8 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 flex items-center gap-3">
-        <Timer className="w-6 h-6 text-emerald-400 flex-shrink-0" />
-        <div className="text-slate-300">
-          <span className="font-semibold text-white">Automatic Mode Transition:</span>
-          {' '}When TW (Trigger Window) time expires, the system automatically initiates an inspiration and returns to the previous ventilation mode for seamless patient care.
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modes.map((mode) => (
           <div
             key={mode.id}
-            className={`bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600 hover:border-blue-500/30 transition-all group ${
-              mode.id === 'csv' ? 'md:col-span-2' : ''
-            }`}
+            className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600 hover:border-blue-500/30 transition-all group"
           >
             <div className="flex items-start gap-4 mb-4">
               <div className="p-3 bg-blue-500/20 rounded-xl">
@@ -121,6 +105,19 @@ const VentilationModes = () => {
             </ul>
           </div>
         ))}
+      </div>
+
+      {/* Synchronized Start Notice */}
+      <div className="mt-8 bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
+        <div className="flex items-center gap-3 mb-2">
+          <Clock className="w-6 h-6 text-blue-400" />
+          <h4 className="text-lg font-semibold text-white">Synchronized Operation</h4>
+        </div>
+        <p className="text-slate-300">
+          All ventilation modes feature synchronized start capability, ensuring optimal
+          timing and coordination with patient breathing efforts for enhanced comfort
+          and effectiveness.
+        </p>
       </div>
     </div>
   );
