@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wind, Info, Clock } from 'lucide-react';
+import { Wind, Info, Clock, Timer } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const modes = [
@@ -25,6 +25,19 @@ const modes = [
       'Adaptive pressure control',
       'Constant flow delivery',
       'Synchronized patient triggering'
+    ]
+  },
+  {
+    id: 'csv',
+    name: 'CSV',
+    fullName: 'Continuous Spontaneous Ventilation',
+    description: 'Supports natural breathing patterns with automatic backup ventilation when needed.',
+    features: [
+      'Patient-initiated breaths',
+      'Automatic inspiration after TW expiration',
+      'Seamless mode transition',
+      'Automatic return to previous mode',
+      'Adjustable TW (Trigger Window) time'
     ]
   },
   {
@@ -71,11 +84,22 @@ const VentilationModes = () => {
         </p>
       </div>
 
+      {/* TW Time Notice */}
+      <div className="mb-8 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 flex items-center gap-3">
+        <Timer className="w-6 h-6 text-emerald-400 flex-shrink-0" />
+        <div className="text-slate-300">
+          <span className="font-semibold text-white">Automatic Mode Transition:</span>
+          {' '}When TW (Trigger Window) time expires, the system automatically initiates an inspiration and returns to the previous ventilation mode for seamless patient care.
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-2 gap-6">
         {modes.map((mode) => (
           <div
             key={mode.id}
-            className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600 hover:border-blue-500/30 transition-all group"
+            className={`bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600 hover:border-blue-500/30 transition-all group ${
+              mode.id === 'csv' ? 'md:col-span-2' : ''
+            }`}
           >
             <div className="flex items-start gap-4 mb-4">
               <div className="p-3 bg-blue-500/20 rounded-xl">
