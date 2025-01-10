@@ -1,30 +1,56 @@
 import React from 'react';
-import { Wind, Info } from 'lucide-react';
+import { Wind, Info, Clock } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const modes = [
   {
-    id: 'cmv-pc',
-    name: 'CMV-PC',
-    fullName: 'Continuous Mandatory Ventilation with Pressure Control',
+    id: 'cmv-pc-ac',
+    name: 'CMV-PC-A/C',
+    fullName: 'Continuous Mandatory Ventilation with Pressure Control - Assist/Control',
     description: 'Delivers preset pressure with each breath, ideal for patients with variable lung compliance.',
-    features: ['Pressure-targeted breaths', 'Constant inspiratory pressure', 'Volume varies with compliance']
+    features: [
+      'Pressure-targeted breaths',
+      'Constant inspiratory pressure',
+      'Volume varies with compliance',
+      'Synchronized patient triggering'
+    ]
   },
   {
-    id: 'cmv-vc',
-    name: 'CMV-VC',
-    fullName: 'Continuous Mandatory Ventilation with Volume Control',
-    description: 'Ensures consistent tidal volume delivery regardless of lung mechanics.',
-    features: ['Volume-targeted breaths', 'Constant flow delivery', 'Pressure varies with resistance']
+    id: 'cmv-vc-ac-apc',
+    name: 'CMV-VC-A/C-APC',
+    fullName: 'Continuous Mandatory Ventilation with Volume Control - Assist/Control with Adaptive Pressure Control',
+    description: 'Ensures consistent tidal volume delivery with adaptive pressure control.',
+    features: [
+      'Volume-targeted breaths',
+      'Adaptive pressure control',
+      'Constant flow delivery',
+      'Synchronized patient triggering'
+    ]
   },
   {
     id: 'simmv',
     name: 'SIMMV',
     fullName: 'Spontaneous Intermittent Mandatory Minute Volume',
     description: 'Combines mandatory breaths with spontaneous breathing support.',
-    features: ['Patient-triggered breaths', 'Backup mandatory rate', 'Pressure support for spontaneous breaths']
+    features: [
+      'Patient-triggered breaths',
+      'Backup mandatory rate',
+      'Pressure support for spontaneous breaths',
+      'Synchronized patient triggering'
+    ]
   },
-  // Add more modes...
+  {
+    id: 'rm',
+    name: 'RM',
+    fullName: 'Recruitment Maneuver',
+    description: 'Specialized mode for lung recruitment with pre-configurable settings.',
+    features: [
+      'Pre-configurable pressure and time settings',
+      'Automated recruitment sequence',
+      'Safety pressure limits',
+      'Real-time response monitoring'
+    ]
+  }
 ];
 
 const VentilationModes = () => {
@@ -36,7 +62,16 @@ const VentilationModes = () => {
         subtitle="Comprehensive range of ventilation strategies for optimal patient care"
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Synchronized Start Notice */}
+      <div className="mb-8 bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex items-center gap-3">
+        <Clock className="w-6 h-6 text-blue-400 flex-shrink-0" />
+        <p className="text-slate-300">
+          <span className="font-semibold text-white">All Modes Feature Synchronized Start:</span>
+          {' '}Enhanced patient-ventilator synchronization across all ventilation modes for optimal breathing support.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
         {modes.map((mode) => (
           <div
             key={mode.id}
