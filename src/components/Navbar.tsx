@@ -48,9 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4">
-          <div className="h-20 flex items-center justify-between">
+          <div className="relative h-24 sm:h-28 flex items-center justify-between">
             {/* Menu Button - Left */}
-            <div className="w-10">
+            <div className="w-10 z-10">
               <button
                 onClick={() => setIsOpen(true)}
                 className="text-white hover:text-blue-400 transition-colors p-2"
@@ -60,20 +60,22 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
               </button>
             </div>
 
-            {/* Logo - Centered */}
-            <button
-              onClick={() => scrollToSection('top')}
-              className="group"
-            >
-              <img 
-                src="/logo.png" 
-                alt="Agnus Logo" 
-                className="w-16 h-16 object-contain group-hover:scale-110 transition-transform"
-              />
-            </button>
+            {/* Logo - Absolutely Centered */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <button
+                onClick={() => scrollToSection('top')}
+                className="group"
+              >
+                <img 
+                  src="/logo.png" 
+                  alt="Agnus Logo" 
+                  className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain group-hover:scale-110 transition-transform"
+                />
+              </button>
+            </div>
 
             {/* Placeholder for symmetry - Right */}
-            <div className="w-10" />
+            <div className="w-10 z-10" />
           </div>
         </div>
       </nav>
@@ -87,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ onGetStarted }) => {
               <img 
                 src="/logo.png" 
                 alt="Agnus Logo" 
-                className="w-16 h-16 object-contain"
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain"
               />
               <button
                 onClick={() => setIsOpen(false)}
