@@ -7,14 +7,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/logo.png" 
-                alt="Agnus Logo" 
-                className="w-8 h-8"
-              />
-              <span className="text-xl font-bold">Agnus</span>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Agnus Logo" 
+              className="w-10 h-10"
+            />
             <p className="text-gray-400">
               Pioneering the future of respiratory care with innovative technology
               and an unwavering commitment to patient safety.
